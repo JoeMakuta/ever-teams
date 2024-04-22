@@ -1,9 +1,9 @@
 import { clsxm } from '@app/utils';
 import { Meta, Text } from 'lib/components';
 import { EverTeamsLogo } from 'lib/components/svgs';
+import { useTranslations } from 'next-intl';
 import Image from 'next/legacy/image';
 import { PropsWithChildren, ReactNode } from 'react';
-import { useTranslations } from 'next-intl';
 import { Footer } from './footer';
 
 type Props = {
