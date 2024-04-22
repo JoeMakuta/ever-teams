@@ -10,10 +10,9 @@ import {
 	signInWorkspaceAPI
 } from '@app/services/client/api';
 import { AxiosError, isAxiosError } from 'axios';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery } from '../useQuery';
-import { useRouter } from 'next/navigation';
 
 type AuthCodeRef = {
 	focus: () => void;
@@ -53,6 +52,7 @@ export function useAuthenticationPasscode() {
 
 	const [errors, setErrors] = useState({} as { [x: string]: any });
 	const router = useRouter();
+
 	// Queries
 	const { queryCall: sendCodeQueryCall, loading: sendCodeLoading } = useQuery(sendAuthCodeAPI);
 
