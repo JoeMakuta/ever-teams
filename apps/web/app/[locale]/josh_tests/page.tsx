@@ -1,22 +1,41 @@
 'use client';
 
 import { clsxm } from '@app/utils';
-import { AddIcon } from 'assets/svg';
-import { withAuthentication } from 'lib/app/authenticator';
+import Input from '@components/ui/inputs/input';
+import { InputField } from 'lib/components';
 import { useTranslations } from 'next-intl';
+import useEmail from './useEmail';
+import usePassword from './usePassword';
 
 const JoshTests = () => {
 	const t = useTranslations();
+	const { email, editEmail } = useEmail();
+	const { password, editPassword } = usePassword();
+	// const {}
 	return (
-		<div className={clsxm('flex')}>
+		<div className={clsxm('flex flex-col gap-3 p-3 max-w-[500px]')}>
 			<h1 className={clsxm('font-bold text-2xl text-center')}>{t('JOSHTEST')}</h1>
-			{/* <Text className={clsxm('font-bold text-5xl underline text-center')}>
-				<p>Hello world</p>
-			</Text> */}
-			<button className="p-2 rounded-full border-2 border-[#0000001a] dark:border-white">
-				<AddIcon width={24} height={24} className={'dark:stroke-white'} />
-			</button>
+			<Input
+				name="email"
+				label="Enter your email : "
+				type="text"
+				placeholder="jjj.gmail.com"
+				required
+				value={email}
+				onChange={editEmail}
+			/>
+			<Input
+				name="email"
+				label="Enter your password : "
+				type="password"
+				placeholder="jjj.gmail.com"
+				required
+				value={password}
+				onChange={editPassword}
+			/>
+			<p>Enter your email : </p>
+			<InputField placeholder="Hello world" type="email" />
 		</div>
 	);
 };
-export default withAuthentication(JoshTests, { displayName: 'JoshTests' });
+export default JoshTests;
